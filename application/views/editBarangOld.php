@@ -1,20 +1,42 @@
 <?php
 
-$userId = '';
-$name = '';
-$email = '';
-$mobile = '';
-$roleId = '';
+$barangId = '';
+$tanggal = '';
+$id_mesin = '';
+$id_aktual_pakai = '';
+$detail = '';
+$no_npb = '';
+$nama_barang = '';
+$jumlah_pesan = '';
+$no_po = '';
+$id_suplier = '';
+$tanggal_masuk = '';
+$jumlah_masuk = '';
+$keterangan = '';
+$harga = '';
+$jumlah_harga = '';
 
-if(!empty($userInfo))
+
+
+if(!empty($barangInfo))
 {
-    foreach ($userInfo as $uf)
+    foreach ($barangInfo as $uf)
     {
-        $userId = $uf->userId;
-        $name = $uf->name;
-        $email = $uf->email;
-        $mobile = $uf->mobile;
-        $roleId = $uf->roleId;
+        $barangId = $uf->barangId;
+        $tanggal = $uf->tanggal;
+        $id_mesin = $uf->id_mesin;
+        $id_aktual_pakai = $uf->id_aktual_pakai;
+        $detail = $uf->detail;
+        $no_npb = $uf->no_npb;
+        $nama_barang = $uf->nama_barang;
+        $jumlah_pesan = $uf->jumlah_pesan;
+        $no_po = $uf->no_po;
+        $id_suplier = $uf->id_suplier;
+        $tanggal_masuk = $uf->tanggal_masuk;
+        $jumlah_masuk = $uf->jumlah_masuk;
+        $keterangan = $uf->keterangan;
+        $harga = $uf->harga;
+        $jumlah_harga = $uf->jumlah_harga;
     }
 }
 
@@ -45,62 +67,105 @@ if(!empty($userInfo))
                     </div><!-- /.box-header -->
                     <!-- form start -->
 
-                    <form role="form" action="<?php echo base_url() ?>editUser" method="post" id="editUser" role="form">
+                    <form role="form" action="<?php echo base_url() ?>editBarang" method="post" id="editBarang" role="form">
                         <div class="box-body">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="fname">Full Name</label>
-                                        <input type="text" class="form-control" id="fname" placeholder="Full Name" name="fname" value="<?php echo $name; ?>" maxlength="128">
-                                        <input type="hidden" value="<?php echo $userId; ?>" name="userId" id="userId" />
+                                        <label for="tanggal">Tanggal</label>
+                                        <input type="text" class="form-control" id="tanggal" placeholder="Tanggal" name="tanggal" value="<?php echo $tanggal; ?>" maxlength="128">
+                                        <input type="hidden" value="<?php echo $barangId; ?>" name="barangId" id="barangId" />
                                     </div>
 
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="email">Email address</label>
-                                        <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" value="<?php echo $email; ?>" maxlength="128">
+                                        <label for="id_mesin">Mesin</label>
+                                        <input type="text" class="form-control" id="id_mesin" placeholder="Enter Mesin" name="id_mesin" value="<?php echo $id_mesin; ?>" maxlength="128">
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="password">Password</label>
-                                        <input type="password" class="form-control" id="password" placeholder="Password" name="password" maxlength="10">
+                                        <label for="id_aktual_pakai">Aktual Pakai</label>
+                                        <input type="text" class="form-control" id="id_aktual_pakai" placeholder="Enter Aktual Pakai" name="id_aktual_pakai" value="<?php echo $id_aktual_pakai; ?>" maxlength="128">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="cpassword">Confirm Password</label>
-                                        <input type="password" class="form-control" id="cpassword" placeholder="Confirm Password" name="cpassword" maxlength="10">
+                                        <label for="detail">Detail</label>
+                                        <input type="text" class="form-control" id="detail" placeholder="Enter Detail" name="detail" value="<?php echo $tdetail; ?>" maxlength="128">
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="mobile">Mobile Number</label>
-                                        <input type="text" class="form-control" id="mobile" placeholder="Mobile Number" name="mobile" value="<?php echo $mobile; ?>" maxlength="10">
+                                        <label for="no_npb">NO NPB</label>
+                                        <input type="text" class="form-control" id="no_npb" placeholder="Enter NO NPB" name="no_npb" value="<?php echo $no_npb; ?>" maxlength="128">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="role">Role</label>
-                                        <select class="form-control" id="role" name="role">
-                                            <option value="0">Select Role</option>
-                                            <?php
-                                            if(!empty($roles))
-                                            {
-                                                foreach ($roles as $rl)
-                                                {
-                                                    ?>
-                                                    <option value="<?php echo $rl->roleId; ?>" <?php if($rl->roleId == $roleId) {echo "selected=selected";} ?>><?php echo $rl->role ?></option>
-                                                    <?php
-                                                }
-                                            }
-                                            ?>
-                                        </select>
+                                        <label for="nama_barang">Nama Barang</label>
+                                        <input type="text" class="form-control" id="nama_barang" placeholder="Enter Nama Barang" name="nama_barang" value="<?php echo $nama_barang; ?>" maxlength="128">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="jumlah_pesan">Jumlah Pesan</label>
+                                        <input type="text" class="form-control" id="jumlah_pesan" placeholder="Enter Jumlah Pesan" name="jumlah_pesan" value="<?php echo $jumlah_pesan; ?>" maxlength="128">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="no_po">NO PO</label>
+                                        <input type="text" class="form-control" id="no_po" placeholder="Enter NO PO" name="no_po" value="<?php echo $no_po; ?>" maxlength="128">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="id_suplier">Suplier</label>
+                                        <input type="text" class="form-control" id="id_suplier" placeholder="Enter Suplier" name="id_suplier" value="<?php echo $id_suplier; ?>" maxlength="128">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="tanggal_masuk">Tanggal Masuk</label>
+                                        <input type="text" class="form-control" id="tanggal_masuk" placeholder="Enter Tanggal Masuk" name="text" value="<?php echo $tanggal_masuk; ?>" maxlength="128">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="jumlah_masuk">Jumlah Masuk</label>
+                                        <input type="text" class="form-control" id="jumlah_masuk" placeholder="Enter Jumlah Masuk" name="jumlah_masuk" value="<?php echo $jumlah_masuk; ?>" maxlength="128">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="keterangan">Keterangan</label>
+                                        <input type="text" class="form-control" id="keterangan" placeholder="Enter Keterangan" name="keterangan" value="<?php echo $keterangan; ?>" maxlength="128">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="harga">Harga</label>
+                                        <input type="text" class="form-control" id="harga" placeholder="Enter Harga" name="harga" value="<?php echo $harga; ?>" maxlength="128">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="jumlah_harga">Jumlah Harga</label>
+                                        <input type="text" class="form-control" id="jumlah_harga" placeholder="Enter Jumlah Harga" name="jumlah_harga" value="<?php echo $jumlah_harga; ?>" maxlength="128">
                                     </div>
                                 </div>
                             </div>

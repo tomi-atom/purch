@@ -174,25 +174,25 @@ class Barang extends BaseController
      * This function is used load user edit information
      * @param number $userId : Optional : This is user id
      */
-    function editOld($userId = NULL)
+    function editBarangOld($barangId = NULL)
     {
-        if($this->isAdmin() == TRUE || $userId == 1)
+        if($this->isAdmin() == TRUE || $barangId == 1)
         {
             $this->loadThis();
         }
         else
         {
-            if($userId == null)
+            if($barangId == null)
             {
-                redirect('userListing');
+                redirect('barangListing');
             }
 
-            $data['roles'] = $this->user_model->getUserRoles();
-            $data['userInfo'] = $this->user_model->getUserInfo($userId);
+            $data['roles'] = $this->barang_model->getBarangRoles();
+            $data['barangInfo'] = $this->barang_model->getBarangInfo($barangId);
 
-            $this->global['pageTitle'] = 'PT. Dumai Jaya Adamas : Edit User';
+            $this->global['pageTitle'] = 'PT. Dumai Jaya Adamas : Edit Barang';
 
-            $this->loadViews("editOld", $this->global, $data, NULL);
+            $this->loadViews("editBarangOld", $this->global, $data, NULL);
         }
     }
 
@@ -200,7 +200,7 @@ class Barang extends BaseController
     /**
      * This function is used to edit the user information
      */
-    function editUser()
+    function editBarang()
     {
         if($this->isAdmin() == TRUE)
         {
@@ -210,40 +210,51 @@ class Barang extends BaseController
         {
             $this->load->library('form_validation');
 
-            $userId = $this->input->post('userId');
+            $barangId = $this->input->post('barangId');
 
-            $this->form_validation->set_rules('fname','Full Name','trim|required|max_length[128]|xss_clean');
-            $this->form_validation->set_rules('email','Email','trim|required|valid_email|xss_clean|max_length[128]');
-            $this->form_validation->set_rules('password','Password','matches[cpassword]|max_length[20]');
-            $this->form_validation->set_rules('cpassword','Confirm Password','matches[password]|max_length[20]');
-            $this->form_validation->set_rules('role','Role','trim|required|numeric');
-            $this->form_validation->set_rules('mobile','Mobile Number','required|min_length[10]|xss_clean');
+            $this->form_validation->set_rules('tanggal','Tanggal','trim|required|max_length[128]|xss_clean');
+            $this->form_validation->set_rules('id_mesin','Mesin','trim|required|max_length[128]|xss_clean');
+            $this->form_validation->set_rules('id_aktual_pakai','Aktual Pakai','trim|required|max_length[128]|xss_clean');
+            $this->form_validation->set_rules('detail','Detail','trim|required|max_length[128]|xss_clean');
+            $this->form_validation->set_rules('no_npb','NO NPB','trim|required|max_length[128]|xss_clean');
+            $this->form_validation->set_rules('nama_barang','Nama Barang','trim|required|max_length[128]|xss_clean');
+            $this->form_validation->set_rules('jumlah_pesan','Jumlah Pesan','trim|required|max_length[128]|xss_clean');
+            $this->form_validation->set_rules('no_po','NO PO','trim|required|max_length[128]|xss_clean');
+            $this->form_validation->set_rules('id_suplier','Suplier','trim|required|max_length[128]|xss_clean');
+            $this->form_validation->set_rules('tanggal_masuk','Tanggal Masuk','trim|required|max_length[128]|xss_clean');
+            $this->form_validation->set_rules('jumlah_masuk','Jumlah Masuk','trim|required|max_length[128]|xss_clean');
+            $this->form_validation->set_rules('keterangan','Keterangan','trim|required|max_length[128]|xss_clean');
+            $this->form_validation->set_rules('harga','Harga','trim|required|max_length[128]|xss_clean');
+            $this->form_validation->set_rules('jumlah_harga','Jumlah Harga','trim|required|max_length[128]|xss_clean');
 
             if($this->form_validation->run() == FALSE)
             {
-                $this->editOld($userId);
+                $this->editOld($barangId);
             }
             else
             {
-                $name = ucwords(strtolower($this->input->post('fname')));
-                $email = $this->input->post('email');
-                $password = $this->input->post('password');
-                $roleId = $this->input->post('role');
-                $mobile = $this->input->post('mobile');
+
+                $tanggal = $this->input->post('tanggal');
+                $id_mesin = $this->input->post('id_mesin');
+                $id_aktual_pakai = $this->input->post('id_aktual_pakai');
+                $detail = $this->input->post('');
+                $ = $this->input->post('');
+                $ = $this->input->post('');
+                $ = $this->input->post('');
+                $ = $this->input->post('');
+                $ = $this->input->post('');
+                $ = $this->input->post('');
+                $ = $this->input->post('');
+                $ = $this->input->post('');
+                $ = $this->input->post('');
+                $ = $this->input->post('');
 
                 $userInfo = array();
 
-                if(empty($password))
-                {
-                    $userInfo = array('email'=>$email, 'roleId'=>$roleId, 'name'=>$name,
+
+                $userInfo = array('email'=>$email, 'roleId'=>$roleId, 'name'=>$name,
                                     'mobile'=>$mobile, 'updatedBy'=>$this->vendorId, 'updatedDtm'=>date('Y-m-d H:i:s'));
-                }
-                else
-                {
-                    $userInfo = array('email'=>$email, 'password'=>getHashedPassword($password), 'roleId'=>$roleId,
-                        'name'=>ucwords($name), 'mobile'=>$mobile, 'updatedBy'=>$this->vendorId,
-                        'updatedDtm'=>date('Y-m-d H:i:s'));
-                }
+
 
                 $result = $this->user_model->editUser($userInfo, $userId);
 
