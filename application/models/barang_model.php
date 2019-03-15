@@ -107,11 +107,11 @@ class Barang_model extends CI_Model
      */
     function getBarangInfo($barangId)
     {
-        $this->db->select('tanggal,id_mesin,id_aktual_pakai,detail,no_npb,nama_barang,jumlah_pesan,no_po,id_suplier,tanggal_masuk,jumlah_masuk,keterangan,harga,jumlah_harga,');
+        $this->db->select('barangId,tanggal,id_mesin,id_aktual_pakai,detail,no_npb,nama_barang,jumlah_pesan,no_po,id_suplier,tanggal_masuk,jumlah_masuk,keterangan,harga,jumlah_harga,');
         $this->db->from('tbl_barangs');
         //$this->db->where('isDeleted', 0);
-		$this->db->where('roleId !=', 1);
-        //$this->db->where('barangId', $barangId);
+		//$this->db->where('roleId !=', 1);
+        $this->db->where('barangId', $barangId);
         $query = $this->db->get();
 
         return $query->result();

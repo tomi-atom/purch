@@ -47,8 +47,8 @@ if(!empty($barangInfo))
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        <i class="fa fa-users"></i> User Management
-        <small>Add / Edit User</small>
+        <i class="fa fa-barangs"></i> Data Management
+        <small>Add / Edit Barang</small>
       </h1>
     </section>
 
@@ -63,7 +63,7 @@ if(!empty($barangInfo))
 
                 <div class="box box-primary">
                     <div class="box-header">
-                        <h3 class="box-title">Enter User Details</h3>
+                        <h3 class="box-title">Enter Barang Details</h3>
                     </div><!-- /.box-header -->
                     <!-- form start -->
 
@@ -73,7 +73,7 @@ if(!empty($barangInfo))
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="tanggal">Tanggal</label>
-                                        <input type="text" class="form-control" id="tanggal" placeholder="Tanggal" name="tanggal" value="<?php echo $tanggal; ?>" maxlength="128">
+                                        <input type="date" class="form-control" id="tanggal" placeholder="Tanggal" name="tanggal" value="<?php echo $tanggal; ?>" maxlength="128">
                                         <input type="hidden" value="<?php echo $barangId; ?>" name="barangId" id="barangId" />
                                     </div>
 
@@ -95,7 +95,7 @@ if(!empty($barangInfo))
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="detail">Detail</label>
-                                        <input type="text" class="form-control" id="detail" placeholder="Enter Detail" name="detail" value="<?php echo $tdetail; ?>" maxlength="128">
+                                        <input type="text" class="form-control" id="detail" placeholder="Enter Detail" name="detail" value="<?php echo $detail; ?>" maxlength="128">
                                     </div>
                                 </div>
                             </div>
@@ -137,7 +137,7 @@ if(!empty($barangInfo))
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="tanggal_masuk">Tanggal Masuk</label>
-                                        <input type="text" class="form-control" id="tanggal_masuk" placeholder="Enter Tanggal Masuk" name="text" value="<?php echo $tanggal_masuk; ?>" maxlength="128">
+                                        <input type="date" class="form-control" id="tanggal_masuk" placeholder="Enter Tanggal Masuk" name="tanggal_masuk" value="<?php echo $tanggal_masuk; ?>" maxlength="128">
                                     </div>
                                 </div>
                             </div>
@@ -211,4 +211,4 @@ if(!empty($barangInfo))
     </section>
 </div>
 
-<script src="<?php echo base_url(); ?>assets/js/editUser.js" type="text/javascript"></script>
+<script src="<?php echo base_url(); ?>assets/js/editBarang.js" type="text/javascript"></script>

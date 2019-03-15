@@ -229,45 +229,43 @@ class Barang extends BaseController
 
             if($this->form_validation->run() == FALSE)
             {
-                $this->editOld($barangId);
+                $this->editBarangOld($barangId);
             }
             else
             {
-
                 $tanggal = $this->input->post('tanggal');
                 $id_mesin = $this->input->post('id_mesin');
                 $id_aktual_pakai = $this->input->post('id_aktual_pakai');
-                $detail = $this->input->post('');
-                $ = $this->input->post('');
-                $ = $this->input->post('');
-                $ = $this->input->post('');
-                $ = $this->input->post('');
-                $ = $this->input->post('');
-                $ = $this->input->post('');
-                $ = $this->input->post('');
-                $ = $this->input->post('');
-                $ = $this->input->post('');
-                $ = $this->input->post('');
+                $detail = $this->input->post('detail');
+                $no_npb = $this->input->post('no_npb');
+                $nama_barang = $this->input->post('nama_barang');
+                $jumlah_pesan = $this->input->post('jumlah_pesan');
+                $no_po = $this->input->post('no_po');
+                $id_suplier = $this->input->post('id_suplier');
+                $tanggal_masuk = $this->input->post('tanggal_masuk');
+                $jumlah_masuk = $this->input->post('jumlah_masuk');
+                $keterangan = $this->input->post('keterangan');
+                $harga = $this->input->post('harga');
+                $jumlah_harga = $this->input->post('jumlah_harga');
 
-                $userInfo = array();
+                $barangInfo = array('tanggal'=>$tanggal,'id_mesin'=>$id_mesin,'id_aktual_pakai'=>$id_aktual_pakai,
+                    'detail'=>$detail,'no_npb'=>$no_npb,'nama_barang'=>$nama_barang,'jumlah_pesan'=>$jumlah_pesan,
+                    'no_po'=>$no_po,'id_suplier'=>$id_suplier,'tanggal_masuk'=>$tanggal_masuk,
+                    'jumlah_masuk'=>$jumlah_masuk,'keterangan'=>$keterangan,'harga'=>$harga,'jumlah_harga'=>$jumlah_harga);
 
 
-                $userInfo = array('email'=>$email, 'roleId'=>$roleId, 'name'=>$name,
-                                    'mobile'=>$mobile, 'updatedBy'=>$this->vendorId, 'updatedDtm'=>date('Y-m-d H:i:s'));
-
-
-                $result = $this->user_model->editUser($userInfo, $userId);
+                $result = $this->barang_model->editBarang($barangInfo, $barangId);
 
                 if($result == true)
                 {
-                    $this->session->set_flashdata('success', 'User updated successfully');
+                    $this->session->set_flashdata('success', 'Barang Berhasil Di Update');
                 }
                 else
                 {
-                    $this->session->set_flashdata('error', 'User updation failed');
+                    $this->session->set_flashdata('error', 'Barang Gagal Di Update');
                 }
 
-                redirect('userListing');
+                redirect('barangListing');
             }
         }
     }
@@ -277,7 +275,7 @@ class Barang extends BaseController
      * This function is used to delete the user using userId
      * @return boolean $result : TRUE / FALSE
      */
-    function deleteUser()
+    function deleteBarang()
     {
         if($this->isAdmin() == TRUE)
         {
@@ -285,10 +283,10 @@ class Barang extends BaseController
         }
         else
         {
-            $userId = $this->input->post('userId');
-            $userInfo = array('isDeleted'=>1,'updatedBy'=>$this->vendorId, 'updatedDtm'=>date('Y-m-d H:i:s'));
+            $barangId = $this->input->post('barangId');
+          //  $barangInfo = array('isDeleted'=>1,'updatedBy'=>$this->vendorId, 'updatedDtm'=>date('Y-m-d H:i:s'));
 
-            $result = $this->user_model->deleteUser($userId, $userInfo);
+            $result = $this->barang_model->deleteBarang($barangId);
 
             if ($result > 0) { echo(json_encode(array('status'=>TRUE))); }
             else { echo(json_encode(array('status'=>FALSE))); }

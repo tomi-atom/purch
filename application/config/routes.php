@@ -58,9 +58,11 @@ $route['barangListing/(:num)'] = "barang/barangListing/$1";
 $route['addBarang'] = "barang/addBarang";
 
 $route['addNewBarang'] = "barang/addNewBarang";
-$route['editBarangOld'] = "user/editBarangOld";
-$route['editBarangOld/(:num)'] = "user/editBarangOld/$1";
-$route['editBarang'] = "user/editBarang";
+$route['editBarangOld'] = "barang/editBarangOld";
+$route['editBarangOld/(:num)'] = "barang/editBarangOld/$1";
+$route['editBarang'] = "barang/editBarang";
+$route['deleteBarang'] = "barang/deleteBarang";
+
 
 
 $route['editOld'] = "user/editOld";

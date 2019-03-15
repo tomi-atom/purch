@@ -73,9 +73,10 @@
 
 
                         <td class="text-center">
-                          <a class="btn btn-sm btn-info" href="<?php echo base_url().'editOld/'.$record->barangId; ?>"><i class="fa fa-pencil"></i></a>
-                          <a class="btn btn-sm btn-danger deleteUser" href="#" data-userid="<?php echo $record->barangId; ?>"><i class="fa fa-trash"></i></a>
-                      </td>
+                          <a class="btn btn-sm btn-info" href="<?php echo base_url().'editBarangOld/'.$record->barangId; ?>"><i class="fa fa-pencil"></i></a>
+                          <a class="btn btn-sm btn-danger deleteBarang" href="#" data-userid="<?php echo $record->barangId; ?>"><i class="fa fa-trash"></i></a>
+
+                        </td>
                     </tr>
                     <?php
                         }
