@@ -176,7 +176,7 @@ class Barang extends BaseController
      */
     function editBarangOld($barangId = NULL)
     {
-        if($this->isAdmin() == TRUE || $barangId == 1)
+        if($this->isAdmin() == TRUE)
         {
             $this->loadThis();
         }
