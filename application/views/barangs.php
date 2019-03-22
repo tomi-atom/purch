@@ -2,18 +2,28 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        <i class="fa fa-users"></i> Data Barang
+        <i class="fa fa-book"></i> Data Barang
         <small>Add, Edit, Delete</small>
       </h1>
     </section>
     <section class="content">
-        <div class="row">
-            <div class="col-xs-12 text-right">
-                <div class="form-group">
-                    <a class="btn btn-primary" href="<?php echo base_url(); ?>addBarang"><i class="fa fa-plus"></i> Add New</a>
+        <?php
+
+        if($role == ROLE_ADMIN)
+        {
+            ?>
+            <div class="row">
+                <div class="col-xs-12 text-right">
+                    <div class="form-group">
+                        <a class="btn btn-primary" href="<?php echo base_url(); ?>addBarang"><i class="fa fa-plus"></i> Add New</a>
+                    </div>
                 </div>
             </div>
-        </div>
+
+            <?php
+        }
+        ?>
+
         <div class="row">
             <div class="col-xs-12">
               <div class="box">
@@ -33,6 +43,7 @@
                 <div class="box-body table-responsive no-padding">
                   <table class="table table-hover">
                     <tr>
+                        <th>ID</th>
                         <th>Tanggal</th>
                       <th>Mesin</th>
                       <th>Aktual Pakai</th>
@@ -56,7 +67,8 @@
                         {
                     ?>
                     <tr>
-                      <td><?php echo $record->tanggal ?></td>
+                        <td><?php echo $record->barangId ?></td>
+                        <td><?php echo $record->tanggal ?></td>
                       <td><?php echo $record->id_mesin ?></td>
                       <td><?php echo $record->id_aktual_pakai ?></td>
                         <td><?php echo $record->detail ?></td>
@@ -73,8 +85,20 @@
 
 
                         <td class="text-center">
-                          <a class="btn btn-sm btn-info" href="<?php echo base_url().'editBarangOld/'.$record->barangId; ?>"><i class="fa fa-pencil"></i></a>
-                          <a class="btn btn-sm btn-danger deleteBarang" href="#" data-userid="<?php echo $record->barangId; ?>"><i class="fa fa-trash"></i></a>
+
+                            <?php
+
+                            if($role == ROLE_ADMIN)
+                            {
+                                ?>
+                                <a class="btn btn-sm btn-info" href="<?php echo base_url().'editBarangOld/'.$record->barangId; ?>"><i class="fa fa-pencil"></i></a>
+                                <a class="btn btn-sm btn-danger deleteBarang" href="#" data-barangid="<?php echo $record->barangId; ?>"><i class="fa fa-trash"></i></a>
+
+
+                                <?php
+                            }
+                            ?>
+                          <a class="btn btn-sm btn-warning" href="<?php echo base_url().'editBarangOld/'.$record->barangId; ?>"><i class="fa fa-print"></i></a>
 
                         </td>
                     </tr>
@@ -93,7 +117,7 @@
         </div>
     </section>
 </div>
-<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/common.js" charset="utf-8"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/common2.js" charset="utf-8"></script>
 <script type="text/javascript">
     jQuery(document).ready(function(){
         jQuery('ul.pagination li a').click(function (e) {

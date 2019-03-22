@@ -104,30 +104,9 @@
                 <span>Barang</span>
               </a>
             </li>
-            <li class="treeview">
-              <a href="#" >
-                <i class="fa fa-ticket"></i>
-                <span>My Tasks</span>
-              </a>
-            </li>
+
             <?php
-            if($role == ROLE_ADMIN || $role == ROLE_MANAGER)
-            {
-            ?>
-            <li class="treeview">
-              <a href="#" >
-                <i class="fa fa-thumb-tack"></i>
-                <span>Task Status</span>
-              </a>
-            </li>
-            <li class="treeview">
-              <a href="#" >
-                <i class="fa fa-upload"></i>
-                <span>Task Uploads</span>
-              </a>
-            </li>
-            <?php
-            }
+
             if($role == ROLE_ADMIN)
             {
             ?>
@@ -137,12 +116,7 @@
                 <span>Users</span>
               </a>
             </li>
-            <li class="treeview">
-              <a href="#" >
-                <i class="fa fa-files-o"></i>
-                <span>Reports</span>
-              </a>
-            </li>
+
             <?php
             }
             ?>

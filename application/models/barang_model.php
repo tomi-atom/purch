@@ -141,7 +141,7 @@ class Barang_model extends CI_Model
     function deleteBarang($barangId, $barangInfo)
     {
         $this->db->where('barangId', $barangId);
-        $this->db->update('tbl_barangs', $barangInfo);
+        $this->db->delete('tbl_barangs', $barangInfo);
 
         return $this->db->affected_rows();
     }

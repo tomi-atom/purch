@@ -36,12 +36,7 @@ class Barang extends BaseController
      */
     function barangListing()
     {
-        if($this->isAdmin() == TRUE)
-        {
-            $this->loadThis();
-        }
-        else
-        {
+
             $this->load->model('barang_model');
 
             $searchText = $this->input->post('searchText');
@@ -58,7 +53,7 @@ class Barang extends BaseController
             $this->global['pageTitle'] = 'PT. Dumai Jaya Adamas : User Listing';
 
             $this->loadViews("barangs", $this->global, $data, NULL);
-        }
+
     }
 
     /**
@@ -176,7 +171,7 @@ class Barang extends BaseController
      */
     function editBarangOld($barangId = NULL)
     {
-        if($this->isAdmin() == TRUE || $barangId == 1)
+        if($this->isAdmin() == TRUE)
         {
             $this->loadThis();
         }
@@ -284,9 +279,9 @@ class Barang extends BaseController
         else
         {
             $barangId = $this->input->post('barangId');
-          //  $barangInfo = array('isDeleted'=>1,'updatedBy'=>$this->vendorId, 'updatedDtm'=>date('Y-m-d H:i:s'));
+            $barangInfo = array();
 
-            $result = $this->barang_model->deleteBarang($barangId);
+            $result = $this->barang_model->deleteBarang($barangId,$barangInfo);
 
             if ($result > 0) { echo(json_encode(array('status'=>TRUE))); }
             else { echo(json_encode(array('status'=>FALSE))); }
