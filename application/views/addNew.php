@@ -57,7 +57,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="mobile">Mobile Number</label>
-                                        <input type="text" class="form-control required digits" id="mobile" name="mobile" maxlength="10">
+                                        <input type="text" class="form-control required digits" id="mobile" name="mobile" maxlength="20">
                                     </div>
                                 </div>
                                 <div class="col-md-6">

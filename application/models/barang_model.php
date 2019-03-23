@@ -145,6 +145,10 @@ class Barang_model extends CI_Model
 
         return $this->db->affected_rows();
     }
+    function deleterecords($id)
+    {
+        $this->db->query("delete  from users where user_id='".$id."'");
+    }
 
 
     /**
