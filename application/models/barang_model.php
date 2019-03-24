@@ -150,42 +150,35 @@ class Barang_model extends CI_Model
         $this->db->query("delete  from users where user_id='".$id."'");
     }
 
+    public function view_by_date($date){
+        $this->db->where('DATE(tanggal)', $date); // Tambahkan where tanggal nya
 
-    /**
-     * This function is used to match users password for change password
-     * @param number $userId : This is user id
-     */
-    function matchOldPassword($userId, $oldPassword)
-    {
-        $this->db->select('userId, password');
-        $this->db->where('userId', $userId);
-        $this->db->where('isDeleted', 0);
-        $query = $this->db->get('tbl_users');
-
-        $user = $query->result();
-
-        if(!empty($user)){
-            if(verifyHashedPassword($oldPassword, $user[0]->password)){
-                return $user;
-            } else {
-                return array();
-            }
-        } else {
-            return array();
-        }
+        return $this->db->get('tbl_barangs')->result();// Tampilkan data barangs sesuai tanggal yang diinput oleh user pada filter
     }
 
-    /**
-     * This function is used to change users password
-     * @param number $userId : This is user id
-     * @param array $userInfo : This is user updation info
-     */
-    function changePassword($userId, $userInfo)
-    {
-        $this->db->where('userId', $userId);
-        $this->db->where('isDeleted', 0);
-        $this->db->update('tbl_users', $userInfo);
+    public function view_by_month($month, $year){
+        $this->db->where('MONTH(tanggal)', $month); // Tambahkan where bulan
+        $this->db->where('YEAR(tanggal)', $year); // Tambahkan where tahun
 
-        return $this->db->affected_rows();
+        return $this->db->get('tbl_barangs')->result(); // Tampilkan data barangs sesuai bulan dan tahun yang diinput oleh user pada filter
+    }
+
+    public function view_by_year($year){
+        $this->db->where('YEAR(tanggal)', $year); // Tambahkan where tahun
+
+        return $this->db->get('tbl_barangs')->result(); // Tampilkan data barangs sesuai tahun yang diinput oleh user pada filter
+    }
+
+    public function view_all(){
+        return $this->db->get('tbl_barangs')->result(); // Tampilkan semua data barangs
+    }
+
+    public function option_tahun(){
+        $this->db->select('YEAR(tanggal) AS tahun'); // Ambil Tahun dari field tanggal
+        $this->db->from('tbl_barangs'); // select ke tabel barangs
+        $this->db->order_by('YEAR(tanggal)'); // Urutkan berdasarkan tahun secara Ascending (ASC)
+        $this->db->group_by('YEAR(tanggal)'); // Group berdasarkan tahun pada field tanggal
+
+        return $this->db->get()->result(); // Ambil data pada tabel barangs sesuai kondisi diatas
     }
 }
