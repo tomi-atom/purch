@@ -28,14 +28,13 @@
             <div class="col-xs-12">
               <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title">List Barang</h3>
                     <hr>
                     
     <link rel="stylesheet" href="<?php echo base_url('assets/jquery-ui/jquery-ui.min.css'); ?>" /> <!-- Load file css jquery-ui -->
     <script src="<?php echo base_url('assets/jquery.min.js'); ?>"></script> <!-- Load file jquery -->
                     <form method="get" action="">
                         <div class="row">
-                            <div class="col-md-2">
+                            <div class="col-xs-2">
                                 <div id="form-select">
                                     <label>Filter Berdasarkan</label><br>
                                     <select name="filter" id="filter">
@@ -48,15 +47,15 @@
                                 </div>
 
                             </div>
-                            <div class="col-md-1">
+                            <div class="col-xs-3 text-left">
                                 <div id="form-tanggal">
                                     <label>Tanggal</label><br>
-                                    <input type="text" name="tanggal" class="input-tanggal" />
+                                    <input  type="text" name="tanggal" class="input-tanggal" />
                                     <br />
                                 </div>
 
                             </div>
-                            <div class="col-md-2">
+                            <div class="col-xs-2">
                                 <div id="form-bulan">
                                     <label>Bulan</label><br>
                                     <select name="bulan">
@@ -91,26 +90,44 @@
                                     <br /><br />
                                 </div>
                             </div>
+                            <div class="box-tools">
+                                <form action="<?php echo base_url() ?>barangListing" method="POST" id="searchList">
+                                    <div class="input-group">
+                                        <input type="text" name="searchText" value="<?php echo $searchText; ?>" class="form-control input-sm pull-right" style="width: 150px;" placeholder="Search"/>
+                                        <div class="input-group-btn">
+                                            <button class="btn btn-sm btn-default searchList"><i class="fa fa-search"></i></button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
                         </div>
-                        <button type="submit">Tampilkan</button>
-                        <a href="<?php echo base_url(); ?>barangListing">Reset Filter</a>
+                        <div class="row">
+                            <div class="col-xs-1 text-right">
+                                <div class="form-group">
+                                    <button  type="submit" class="btn btn-info">Tampilkan</button>
+                                </div>
+                            </div>
+                            <div class="col-xs-1 text-left">
+                                <div class="form-group">
+                                    <a class="btn btn-default" href="<?php echo base_url(); ?>barangListing">Reset Filter</a>
+                                </div>
+                            </div>
+                            <div class="col-xs-2 text-right">
+                                <div class="form-group">
+                                    <a class="btn btn-warning" href="<?php echo base_url(); ?>addBarang"><i class="fa fa-print"></i> Cetak</a>
+                                </div>
+                            </div>
+                        </div>
+
                     </form>
                     <hr />
-                    <div class="box-tools">
-                        <form action="<?php echo base_url() ?>barangListing" method="POST" id="searchList">
-                            <div class="input-group">
-                              <input type="text" name="searchText" value="<?php echo $searchText; ?>" class="form-control input-sm pull-right" style="width: 150px;" placeholder="Search"/>
-                              <div class="input-group-btn">
-                                <button class="btn btn-sm btn-default searchList"><i class="fa fa-search"></i></button>
-                              </div>
-                            </div>
-                        </form>
-                    </div>
+
+
                 </div><!-- /.box-header -->
-                <div class="box-body table-responsive padding">
+                <div class="box-body table-responsive no-border">
                   <table class="table table-hover">
                     <tr>
-                        <th>ID</th>
                         <th>Tanggal</th>
                       <th>Mesin</th>
                       <th>Aktual Pakai</th>
@@ -133,8 +150,8 @@
                         foreach($barangRecords as $record)
                         {
                     ?>
+                            <?php $record->barangId ?>
                     <tr>
-                        <td><?php echo $record->barangId ?></td>
                         <td><?php echo $record->tanggal ?></td>
                       <td><?php echo $record->id_mesin ?></td>
                       <td><?php echo $record->id_aktual_pakai ?></td>
@@ -165,7 +182,6 @@
                                 <?php
                             }
                             ?>
-                          <a class="btn btn-sm btn-warning" href="<?php echo base_url().'cetak_produk/'; ?>"><i class="fa fa-print"></i></a>
 
                         </td>
                     </tr>

@@ -47,7 +47,7 @@ class Barang extends BaseController
 
             $count = $this->barang_model->barangListingCount($searchText);
 
-			$returns = $this->paginationCompress ( "barangListing/", $count, 5 );
+			$returns = $this->paginationCompress ( "barangListing/", $count, 10 );
 
             $data['barangRecords'] = $this->barang_model->barangListing($searchText, $returns["page"], $returns["segment"]);
 
