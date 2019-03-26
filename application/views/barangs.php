@@ -32,7 +32,7 @@
                     
     <link rel="stylesheet" href="<?php echo base_url('assets/jquery-ui/jquery-ui.min.css'); ?>" /> <!-- Load file css jquery-ui -->
     <script src="<?php echo base_url('assets/jquery.min.js'); ?>"></script> <!-- Load file jquery -->
-                    <form method="get" action="">
+                    <form method="get" action="<?php echo base_url() ?>barangListing">
                         <div class="row">
                             <div class="col-xs-2">
                                 <div id="form-select">
@@ -82,24 +82,17 @@
                                     <select name="tahun">
                                         <option value="">Pilih</option>
                                         <?php
-                                        foreach($option_tahun as $data){ // Ambil data tahun dari model yang dikirim dari controller
-                                            echo '<option value="'.$data->tahun.'">'.$data->tahun.'</option>';
+                                        foreach($option_tahun as $record){ // Ambil data tahun dari model yang dikirim dari controller
+                                            echo '<option value="'.$record->tahun.'">'.$record->tahun.'</option>';
                                         }
                                         ?>
                                     </select>
                                     <br /><br />
                                 </div>
                             </div>
-                            <div class="box-tools">
-                                <form action="<?php echo base_url() ?>barangListing" method="POST" id="searchList">
-                                    <div class="input-group">
-                                        <input type="text" name="searchText" value="<?php echo $searchText; ?>" class="form-control input-sm pull-right" style="width: 150px;" placeholder="Search"/>
-                                        <div class="input-group-btn">
-                                            <button class="btn btn-sm btn-default searchList"><i class="fa fa-search"></i></button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
+
+
+
 
                         </div>
                         <div class="row">
@@ -115,14 +108,24 @@
                             </div>
                             <div class="col-xs-2 text-right">
                                 <div class="form-group">
-                                    <a class="btn btn-warning" href="<?php echo base_url(); ?>addBarang"><i class="fa fa-print"></i> Cetak</a>
+
+                                    <a class="btn btn-warning" href="<?php echo base_url(); ?>cetak"><i class="fa fa-print"></i> Cetak</a>
                                 </div>
                             </div>
                         </div>
 
                     </form>
                     <hr />
-
+                    <div class="box-tools">
+                        <form action="<?php echo base_url() ?>barangListing" method="POST" id="searchList">
+                            <div class="input-group">
+                                <input type="text" name="searchText" value="<?php echo $searchText; ?>" class="form-control input-sm pull-right" style="width: 150px;" placeholder="Search"/>
+                                <div class="input-group-btn">
+                                    <button class="btn btn-sm btn-default searchList"><i class="fa fa-search"></i></button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
 
                 </div><!-- /.box-header -->
                 <div class="box-body table-responsive no-border">
@@ -145,11 +148,12 @@
                       <th class="text-center">Actions</th>
                     </tr>
                     <?php
-                    if(!empty($barangRecords))
+                    if(!empty($barangs))
                     {
-                        foreach($barangRecords as $record)
+                        foreach($barangs as $record)
                         {
                     ?>
+                            <?php $tanggal = date('d-m-Y', strtotime($record->tanggal)); ?>
                             <?php $record->barangId ?>
                     <tr>
                         <td><?php echo $record->tanggal ?></td>

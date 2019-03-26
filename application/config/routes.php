@@ -62,7 +62,7 @@ $route['editBarangOld'] = "barang/editBarangOld";
 $route['editBarangOld/(:num)'] = "barang/editBarangOld/$1";
 $route['editBarang'] = "barang/editBarang";
 $route['deleteBarang'] = "barang/deleteBarang";
-$route['cetak_produk'] = "laporan/cetak_produk";
+$route['cetak'] = "barang/cetak";
 
 
 

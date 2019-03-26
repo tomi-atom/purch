@@ -34,10 +34,11 @@ class Barang_model extends CI_Model
     {
         $this->db->select('*');
         $this->db->from('tbl_barangs');
+      //  $this->db->join('tbl_roles as Role', 'Role.roleId = BaseTbl.roleId','left');
         if(!empty($searchText)) {
             $likeCriteria = "(id_mesin  LIKE '%".$searchText."%'
                             OR  id_aktual_pakai  LIKE '%".$searchText."%'
-                            OR   id_suplier LIKE '%".$searchText."%')";
+                           OR   id_suplier LIKE '%".$searchText."%')";
             $this->db->where($likeCriteria);
         }
 
