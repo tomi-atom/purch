@@ -109,6 +109,9 @@
                             <div class="col-xs-2 text-right">
                                 <div class="form-group">
 
+                                    <b><?php echo $ket; ?></b><br /><br />
+                                    <a href="<?php echo $url_cetak; ?>">CETAK PDF</a><br /><br />
+
                                     <a class="btn btn-warning" href="<?php echo base_url(); ?>cetak"><i class="fa fa-print"></i> Cetak</a>
                                 </div>
                             </div>
