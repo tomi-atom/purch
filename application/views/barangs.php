@@ -28,6 +28,18 @@
             <div class="col-xs-12">
               <div class="box">
                 <div class="box-header">
+                    <h3 class="box-title">Barang</h3>
+                    <div class="box-tools">
+                        <form action="<?php echo base_url() ?>barangListing" method="POST" id="searchList">
+                            <div class="input-group">
+                                <input type="text" name="searchText" value="<?php echo $searchText; ?>" class="form-control input-sm pull-right" style="width: 150px;" placeholder="Search"/>
+                                <div class="input-group-btn">
+                                    <button class="btn btn-sm btn-default searchList"><i class="fa fa-search"></i></button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
                     <hr>
                     
     <link rel="stylesheet" href="<?php echo base_url('assets/jquery-ui/jquery-ui.min.css'); ?>" /> <!-- Load file css jquery-ui -->
@@ -108,27 +120,14 @@
                             </div>
                             <div class="col-xs-2 text-right">
                                 <div class="form-group">
-
-                                    <b><?php echo $ket; ?></b><br /><br />
-                                    <a href="<?php echo $url_cetak; ?>">CETAK PDF</a><br /><br />
-
-                                    <a class="btn btn-warning" href="<?php echo base_url(); ?>cetak"><i class="fa fa-print"></i> Cetak</a>
+                                    <a class="btn btn-warning" href="<?php echo $url_cetak; ?>"><i class="fa fa-print"></i> Cetak</a>
                                 </div>
                             </div>
                         </div>
 
                     </form>
                     <hr />
-                    <div class="box-tools">
-                        <form action="<?php echo base_url() ?>barangListing" method="POST" id="searchList">
-                            <div class="input-group">
-                                <input type="text" name="searchText" value="<?php echo $searchText; ?>" class="form-control input-sm pull-right" style="width: 150px;" placeholder="Search"/>
-                                <div class="input-group-btn">
-                                    <button class="btn btn-sm btn-default searchList"><i class="fa fa-search"></i></button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+
 
                 </div><!-- /.box-header -->
                 <div class="box-body table-responsive no-border">
