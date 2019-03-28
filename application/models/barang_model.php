@@ -50,6 +50,7 @@ class Barang_model extends CI_Model
         return $result;
     }
 
+
     /**
      * This function is used to get the user roles information
      * @return array $result : This is result of the query
