@@ -403,7 +403,18 @@ class Barang extends BaseController
             }
         }else{ // Jika user tidak mengklik tombol tampilkan
             $ket = 'Semua Data barangs';
-            $barangs = $this->barang_model->view_all(); // Panggil fungsi view_all yang ada di barang_model
+
+            $searchText = $this->input->post('searchText');
+            $data['searchText'] = $searchText;
+
+            $this->load->library('pagination');
+
+            $count = $this->barang_model->barangListingCount($searchText);
+
+            $returns = $this->paginationCompress ( "barangListing/", $count, 5 );
+            $barangs = $this->barang_model->barangListing($searchText, $returns["page"], $returns["segment"]);// Panggil fungsi view_all yang ada di barang_model
+
+            //$barangs = $this->barang_model->view_all(); // Panggil fungsi view_all yang ada di barang_model
         }
 
         $data['ket'] = $ket;
