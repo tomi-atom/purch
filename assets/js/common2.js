@@ -11,7 +11,7 @@ jQuery(document).ready(function(){
             hitURL = baseURL + "deleteBarang",
             currentRow = $(this);
 
-        var confirmation = confirm("Are you sure to delete this barang?");
+        var confirmation = confirm("Anda Yakin untuk menghapus barang?");
 
         if(confirmation)
         {
@@ -23,8 +23,8 @@ jQuery(document).ready(function(){
             }).done(function(data){
                 console.log(data);
                 currentRow.parents('tr').remove();
-                if(data.status = true) { alert("Barang successfully deleted"); }
-                else if(data.status = false) { alert("barang deletion failed"); }
+                if(data.status = true) { alert("Barang Berhasil dihapus"); }
+                else if(data.status = false) { alert("Barang  Gagal dihapus"); }
                 else { alert("Access denied..!"); }
             });
         }

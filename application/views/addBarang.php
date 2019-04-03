@@ -49,7 +49,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="detail">Detail</label>
-                                        <input type="detail" class="form-control required" id="cpassword" name="detail" maxlength="128">
+                                        <input type="detail" class="form-control required" id="detail" name="detail" maxlength="128">
                                     </div>
                                 </div>
                             </div>
@@ -71,7 +71,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="jumlah_pesan">Jumlah Pesan</label>
-                                        <input type="text" class="form-control required" id="jumlah_pesan" name="jumlah_pesan" maxlength="128">
+                                        <input type="number" class="form-control required" id="jumlah_pesan" name="jumlah_pesan" maxlength="128">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -98,14 +98,14 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="jumlah_masuk">Jumlah Masuk</label>
-                                        <input type="text" class="form-control required" id="jumlah_masuk" name="jumlah_masuk" maxlength="128">
+                                        <label for="nama_faktur">Nama Faktur</label>
+                                        <input type="text" class="form-control required " id="nama_faktur" name="nama_faktur" maxlength="128">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="keterangan">Keterangan</label>
-                                        <input type="text" class="form-control required" id="keterangan" name="keterangan" maxlength="128">
+                                        <label for="jumlah_masuk">Jumlah Masuk</label>
+                                        <input type="number" class="form-control required" id="jumlah_masuk" name="jumlah_masuk" maxlength="128">
                                     </div>
                                 </div>
 
@@ -113,18 +113,21 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="Harga">Harga</label>
-                                        <input type="text" class="form-control required " id="harga" name="harga" maxlength="128">
+                                        <label for="keterangan">Keterangan</label>
+                                        <input type="text" class="form-control required" id="keterangan" name="keterangan" maxlength="128">
                                     </div>
                                 </div>
+
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="jumlah_harga">Jumlah Harga</label>
-                                        <input type="text" class="form-control required" id="jumlah_harga" name="jumlah_harga" maxlength="128">
+                                        <label for="Harga">Harga</label>
+                                        <input type="number" class="form-control required " id="harga" name="harga" maxlength="128">
                                     </div>
                                 </div>
 
                             </div>
+
+
                         </div><!-- /.box-body -->
 
                         <div class="box-footer">
@@ -167,4 +170,4 @@
     </section>
 
 </div>
-<script src="<?php echo base_url(); ?>assets/js/addUser.js" type="text/javascript"></script>
+<script src="<?php echo base_url(); ?>assets/js/addBarang.js" type="text/javascript"></script>

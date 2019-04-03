@@ -23,12 +23,12 @@ $(document).ready(function(){
 			role : { required : true, selected : true}
 		},
 		messages:{
-			fname :{ required : "This field is required" },
-			email : { required : "This field is required", email : "Please enter valid email address", remote : "Email already taken" },
-			password : { required : "This field is required" },
-			cpassword : {required : "This field is required", equalTo: "Please enter same password" },
-			mobile : { required : "This field is required", digits : "Please enter numbers only" },
-			role : { required : "This field is required", selected : "Please select atleast one option" }			
+			fname :{ required : "Data harus di isi" },
+			email : { required : "Data harus di isi", email : "Please enter valid email address", remote : "Email already taken" },
+			password : { required : "Data harus di isi" },
+			cpassword : {required : "Data harus di isi", equalTo: "Please enter same password" },
+			mobile : { required : "Data harus di isi", digits : "Please enter numbers only" },
+			role : { required : "Data harus di isi", selected : "Please select atleast one option" }
 		}
 	});
 });

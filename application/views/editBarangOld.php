@@ -11,6 +11,7 @@ $jumlah_pesan = '';
 $no_po = '';
 $id_suplier = '';
 $tanggal_masuk = '';
+$nama_faktur = '';
 $jumlah_masuk = '';
 $keterangan = '';
 $harga = '';
@@ -33,6 +34,7 @@ if(!empty($barangInfo))
         $no_po = $uf->no_po;
         $id_suplier = $uf->id_suplier;
         $tanggal_masuk = $uf->tanggal_masuk;
+        $nama_faktur = $uf->nama_faktur;
         $jumlah_masuk = $uf->jumlah_masuk;
         $keterangan = $uf->keterangan;
         $harga = $uf->harga;
@@ -117,7 +119,7 @@ if(!empty($barangInfo))
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="jumlah_pesan">Jumlah Pesan</label>
-                                        <input type="text" class="form-control" id="jumlah_pesan" placeholder="Enter Jumlah Pesan" name="jumlah_pesan" value="<?php echo $jumlah_pesan; ?>" maxlength="128">
+                                        <input type="number" class="form-control" id="jumlah_pesan" placeholder="Enter Jumlah Pesan" name="jumlah_pesan" value="<?php echo $jumlah_pesan; ?>" maxlength="128">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -144,31 +146,34 @@ if(!empty($barangInfo))
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="jumlah_masuk">Jumlah Masuk</label>
-                                        <input type="text" class="form-control" id="jumlah_masuk" placeholder="Enter Jumlah Masuk" name="jumlah_masuk" value="<?php echo $jumlah_masuk; ?>" maxlength="128">
+                                        <label for="nama_faktur">Nama Faktur</label>
+                                        <input type="text" class="form-control" id="nama_fakturk" placeholder="Enter Nama Faktur" name="nama_faktur" value="<?php echo $nama_faktur; ?>" maxlength="128">
                                     </div>
                                 </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="jumlah_masuk">Jumlah Masuk</label>
+                                        <input type="number" class="form-control" id="jumlah_masuk" placeholder="Enter Jumlah Masuk" name="jumlah_masuk" value="<?php echo $jumlah_masuk; ?>" maxlength="128">
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="keterangan">Keterangan</label>
                                         <input type="text" class="form-control" id="keterangan" placeholder="Enter Keterangan" name="keterangan" value="<?php echo $keterangan; ?>" maxlength="128">
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="harga">Harga</label>
-                                        <input type="text" class="form-control" id="harga" placeholder="Enter Harga" name="harga" value="<?php echo $harga; ?>" maxlength="128">
+                                        <input type="number" class="form-control" id="harga" placeholder="Enter Harga" name="harga" value="<?php echo $harga; ?>" maxlength="128">
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="jumlah_harga">Jumlah Harga</label>
-                                        <input type="text" class="form-control" id="jumlah_harga" placeholder="Enter Jumlah Harga" name="jumlah_harga" value="<?php echo $jumlah_harga; ?>" maxlength="128">
-                                    </div>
-                                </div>
+
                             </div>
+
                         </div><!-- /.box-body -->
 
                         <div class="box-footer">

@@ -2,14 +2,30 @@
 <head>
     <title>Cetak PDF</title>
     <style>
+
+        div{
+
+            overflow-x: auto;
+
+            width: 50%;
+
+            margin: auto;
+
+        }
         table {
             border-collapse:collapse;
-            table-layout:fixed;width: 350px;
+            word-wrap:break-word;
+            width: 40px;
         }
         table td {
-            word-wrap:break-word;
-            width: 20%;
+            table-layout: auto;
+            width: 60px;
+            text-align: center;
+            word-wrap: initial;
+            font-size: 10px;
+
         }
+
     </style>
 </head>
 <body>
@@ -17,7 +33,7 @@
 <div class="box-body table-responsive no-border">
     <table class="table table-responsive table-hover" border="1" >
         <tr bgcolor="#7fffd4">
-            <td>Tanggal  </td>
+            <td>Tanggal</td>
             <td>Mesin</td>
             <td>Aktual Pakai</td>
             <td>Detail</td>
@@ -27,10 +43,12 @@
             <td>NO PO</td>
             <td>Suplier</td>
             <td>Tanggal Masuk</td>
+            <td>Nama Faktur</td>
             <td>Jumlah Masuk</td>
+            <td>Sisa</td>
             <td>Keterangan</td>
-            <td>Harga</td>
-            <td>Jumlah Harga</td>
+            <td>Harga (Rp)</td>
+            <td>Jumlah Harga (Rp)</td>
 
         </tr>
         <?php
@@ -41,6 +59,11 @@
                 ?>
                 <?php $tanggal = date('d-m-Y', strtotime($record->tanggal)); ?>
                 <?php $record->barangId ?>
+                <?php $jumlah_pesan = $record->jumlah_pesan ?>
+                <?php $jumlah_masuk = $record->jumlah_masuk ?>
+                <?php $sisa = $jumlah_pesan-$jumlah_masuk ?>
+                <?php $harga = $record->harga ?>
+                <?php $jumlah_harga = $jumlah_masuk*$harga ?>
                 <tr>
                     <td><?php echo $record->tanggal ?></td>
                     <td><?php echo $record->id_mesin ?></td>
@@ -48,14 +71,18 @@
                     <td><?php echo $record->detail ?></td>
                     <td><?php echo $record->no_npb ?></td>
                     <td><?php echo $record->nama_barang ?></td>
-                    <td><?php echo $record->jumlah_pesan ?></td>
+                    <td><?php echo $jumlah_pesan ?></td>
                     <td><?php echo $record->no_po?></td>
                     <td><?php echo $record->id_suplier?></td>
                     <td><?php echo $record->tanggal_masuk ?></td>
-                    <td><?php echo $record->jumlah_masuk?></td>
+                    <td><?php echo $record->nama_faktur ?></td>
+                    <td><?php echo $jumlah_masuk?></td>
+                    <td><?php echo $sisa?></td>
                     <td><?php echo $record->keterangan?></td>
-                    <td><?php echo $record->harga ?></td>
-                    <td><?php echo $record->jumlah_harga ?></td>
+                    <td><?php echo $harga ?></td>
+                    <td><?php echo $jumlah_harga ?></td>
+
+
 
 
                 </tr>

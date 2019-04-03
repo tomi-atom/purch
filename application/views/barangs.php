@@ -143,7 +143,9 @@
                         <th>NO PO</th>
                         <th>Suplier</th>
                         <th>Tanggal Masuk</th>
+                        <th>Nama Faktur</th>
                         <th>Jumlah Masuk</th>
+                        <th>Sisa</th>
                         <th>Keterangan</th>
                         <th>Harga</th>
                         <th>Jumlah Harga</th>
@@ -157,6 +159,13 @@
                     ?>
                             <?php $tanggal = date('d-m-Y', strtotime($record->tanggal)); ?>
                             <?php $record->barangId ?>
+                            <?php $jumlah_pesan = $record->jumlah_pesan ?>
+                            <?php $jumlah_masuk = $record->jumlah_masuk ?>
+                            <?php $sisa = $jumlah_pesan-$jumlah_masuk ?>
+                            <?php $harga = $record->harga ?>
+                            <?php $jumlah_harga = $jumlah_masuk*$harga ?>
+
+
                     <tr>
                         <td><?php echo $record->tanggal ?></td>
                       <td><?php echo $record->id_mesin ?></td>
@@ -164,14 +173,16 @@
                         <td><?php echo $record->detail ?></td>
                         <td><?php echo $record->no_npb ?></td>
                         <td><?php echo $record->nama_barang ?></td>
-                        <td><?php echo $record->jumlah_pesan ?></td>
+                        <td><?php echo $jumlah_pesan ?></td>
                         <td><?php echo $record->no_po?></td>
                         <td><?php echo $record->id_suplier?></td>
                         <td><?php echo $record->tanggal_masuk ?></td>
-                        <td><?php echo $record->jumlah_masuk?></td>
+                        <td><?php echo $record->nama_faktur ?></td>
+                        <td><?php echo $jumlah_masuk?></td>
+                        <td><?php echo $sisa?></td>
                         <td><?php echo $record->keterangan?></td>
-                        <td><?php echo $record->harga ?></td>
-                        <td><?php echo $record->jumlah_harga ?></td>
+                        <td><?php echo 'Rp ',$harga ?></td>
+                        <td><?php echo 'Rp ',$jumlah_harga ?></td>
 
 
                         <td class="text-center">

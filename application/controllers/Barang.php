@@ -49,11 +49,11 @@ class Barang extends BaseController
 
         $count = $this->barang_model->barangListingCount($searchText);
 
-        $returns = $this->paginationCompress ( "barangListing/", $count, 5 );
+        $returns = $this->paginationCompress ( "barangListing/", $count, 20 );
 
        // $data['ket'] = $this->barang_model->barangListing($searchText, $returns["page"], $returns["segment"]);
 
-        $this->global['pageTitle'] = 'PT. Dumai Jaya Adamas : User Listing';
+        $this->global['pageTitle'] = 'PT. Dumai Jaya Adamas : Barang Listing';
 
 
         if(isset($_GET['filter']) && ! empty($_GET['filter'])){ // Cek apakah user telah memilih filter dan klik tombol tampilkan
@@ -156,9 +156,9 @@ class Barang extends BaseController
             $this->form_validation->set_rules('no_po','NO PO','trim|required|max_length[128]|xss_clean');
             $this->form_validation->set_rules('id_suplier','Suplier','trim|required|max_length[128]|xss_clean');
             $this->form_validation->set_rules('tanggal_masuk','Tanggal Masuk','trim|required|max_length[128]|xss_clean');
+            $this->form_validation->set_rules('nama_faktur','Nama Faktur','trim|required|max_length[128]|xss_clean');
             $this->form_validation->set_rules('keterangan','Keterangan','trim|required|max_length[128]|xss_clean');
             $this->form_validation->set_rules('harga','Harga','trim|required|max_length[128]|xss_clean');
-            $this->form_validation->set_rules('jumlah_harga','Jumlah Harga','trim|required|max_length[128]|xss_clean');
 
             if($this->form_validation->run() == FALSE)
             {
@@ -176,15 +176,15 @@ class Barang extends BaseController
                 $no_po = $this->input->post('no_po');
                 $id_suplier = $this->input->post('id_suplier');
                 $tanggal_masuk = $this->input->post('tanggal_masuk');
+                $nama_faktur = $this->input->post('nama_faktur');
                 $jumlah_masuk = $this->input->post('jumlah_masuk');
                 $keterangan = $this->input->post('keterangan');
                 $harga = $this->input->post('harga');
-                $jumlah_harga = $this->input->post('jumlah_harga');
 
                 $barangInfo = array('tanggal'=>$tanggal,'id_mesin'=>$id_mesin,'id_aktual_pakai'=>$id_aktual_pakai,
                     'detail'=>$detail,'no_npb'=>$no_npb,'nama_barang'=>$nama_barang,'jumlah_pesan'=>$jumlah_pesan,
-                    'no_po'=>$no_po,'id_suplier'=>$id_suplier,'tanggal_masuk'=>$tanggal_masuk,
-                    'jumlah_masuk'=>$jumlah_masuk,'keterangan'=>$keterangan,'harga'=>$harga,'jumlah_harga'=>$jumlah_harga);
+                    'no_po'=>$no_po,'id_suplier'=>$id_suplier,'tanggal_masuk'=>$tanggal_masuk,'nama_faktur'=>$nama_faktur,
+                    'jumlah_masuk'=>$jumlah_masuk,'keterangan'=>$keterangan,'harga'=>$harga);
 
                 $this->load->model('barang_model');
                 $result = $this->barang_model->addNewBarang($barangInfo);
@@ -256,10 +256,10 @@ class Barang extends BaseController
             $this->form_validation->set_rules('no_po','NO PO','trim|required|max_length[128]|xss_clean');
             $this->form_validation->set_rules('id_suplier','Suplier','trim|required|max_length[128]|xss_clean');
             $this->form_validation->set_rules('tanggal_masuk','Tanggal Masuk','trim|required|max_length[128]|xss_clean');
+            $this->form_validation->set_rules('nama_faktur','Nama Faktur','trim|required|max_length[128]|xss_clean');
             $this->form_validation->set_rules('jumlah_masuk','Jumlah Masuk','trim|required|max_length[128]|xss_clean');
             $this->form_validation->set_rules('keterangan','Keterangan','trim|required|max_length[128]|xss_clean');
             $this->form_validation->set_rules('harga','Harga','trim|required|max_length[128]|xss_clean');
-            $this->form_validation->set_rules('jumlah_harga','Jumlah Harga','trim|required|max_length[128]|xss_clean');
 
             if($this->form_validation->run() == FALSE)
             {
@@ -277,15 +277,15 @@ class Barang extends BaseController
                 $no_po = $this->input->post('no_po');
                 $id_suplier = $this->input->post('id_suplier');
                 $tanggal_masuk = $this->input->post('tanggal_masuk');
+                $nama_faktur = $this->input->post('nama_faktur');
                 $jumlah_masuk = $this->input->post('jumlah_masuk');
                 $keterangan = $this->input->post('keterangan');
                 $harga = $this->input->post('harga');
-                $jumlah_harga = $this->input->post('jumlah_harga');
 
                 $barangInfo = array('tanggal'=>$tanggal,'id_mesin'=>$id_mesin,'id_aktual_pakai'=>$id_aktual_pakai,
                     'detail'=>$detail,'no_npb'=>$no_npb,'nama_barang'=>$nama_barang,'jumlah_pesan'=>$jumlah_pesan,
-                    'no_po'=>$no_po,'id_suplier'=>$id_suplier,'tanggal_masuk'=>$tanggal_masuk,
-                    'jumlah_masuk'=>$jumlah_masuk,'keterangan'=>$keterangan,'harga'=>$harga,'jumlah_harga'=>$jumlah_harga);
+                    'no_po'=>$no_po,'id_suplier'=>$id_suplier,'tanggal_masuk'=>$tanggal_masuk,'nama_faktur'=>$nama_faktur,
+                    'jumlah_masuk'=>$jumlah_masuk,'keterangan'=>$keterangan,'harga'=>$harga);
 
 
                 $result = $this->barang_model->editBarang($barangInfo, $barangId);
