@@ -167,7 +167,7 @@
 
 
                     <tr>
-                        <td><?php echo $record->tanggal ?></td>
+                        <td><?php echo $tanggal ?></td>
                       <td><?php echo $record->id_mesin ?></td>
                       <td><?php echo $record->id_aktual_pakai ?></td>
                         <td><?php echo $record->detail ?></td>
@@ -176,7 +176,7 @@
                         <td><?php echo $jumlah_pesan ?></td>
                         <td><?php echo $record->no_po?></td>
                         <td><?php echo $record->id_suplier?></td>
-                        <td><?php echo $record->tanggal_masuk ?></td>
+                        <td><?php echo  date('d-m-Y', strtotime($record->tanggal_masuk)) ?></td>
                         <td><?php echo $record->nama_faktur ?></td>
                         <td><?php echo $jumlah_masuk?></td>
                         <td><?php echo $sisa?></td>

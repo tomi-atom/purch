@@ -15,7 +15,6 @@ $nama_faktur = '';
 $jumlah_masuk = '';
 $keterangan = '';
 $harga = '';
-$jumlah_harga = '';
 
 
 
@@ -38,7 +37,7 @@ if(!empty($barangInfo))
         $jumlah_masuk = $uf->jumlah_masuk;
         $keterangan = $uf->keterangan;
         $harga = $uf->harga;
-        $jumlah_harga = $uf->jumlah_harga;
+        
     }
 }
 
