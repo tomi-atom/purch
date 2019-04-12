@@ -54,6 +54,12 @@
                                         <option value="1">Per Tanggal</option>
                                         <option value="2">Per Bulan</option>
                                         <option value="3">Per Tahun</option>
+                                        <option value="4">Per Mesin</option>
+                                        <option value="5">Per Aktual Pakai</option>
+                                        <option value="6">Per NO NPB</option>
+                                        <option value="8">Per Suplier</option>
+                                        <option value="9">Per Tanggal Masuk</option>
+
                                     </select>
                                     <br /><br />
                                 </div>
@@ -102,11 +108,66 @@
                                     <br /><br />
                                 </div>
                             </div>
+                            <div class="col-xs-3 text-left">
+                                <div id="form-mesin">
+                                    <label>Mesin</label><br>
+                                    <input  type="text" name="mesin" class="input-mesin" />
+                                    <br />
+                                </div>
 
+                            </div>
+                            <div class="col-xs-3 text-left">
+                                <div id="form-aktual-pakai">
+                                    <label>Aktual Pakai</label><br>
+                                    <input  type="text" name="aktual_pakai" class="input-aktual-pakai" />
+                                    <br />
+                                </div>
+                            </div>
+                            <div class="col-xs-3 text-left">
+                                <div id="form-no-npb">
+                                    <label>NO NPB</label><br>
+                                    <input  type="text" name="no-npb" class="input-no-npb" />
+                                    <br />
+                                </div>
+                            </div>
+                            <div class="col-xs-3 text-left">
+                                <div id="form-nama-barang">
+                                    <label>Nama Barang</label><br>
+                                    <input  type="text" name="nama_barang" class="input-nama-barang" />
+                                    <br />
+                                </div>
 
+                            </div>
+                            <div class="col-xs-3 text-left">
+                                <div id="form-no-po">
+                                    <label>NO PO</label><br>
+                                    <input  type="text" name="aktual_pakai" class="input-aktual-pakai" />
+                                    <br />
+                                </div>
 
+                            </div>
+
+                            <div class="col-xs-3 text-left">
+                                <div id="form-suplier">
+                                    <label>Suplier</label><br>
+                                    <input  type="text" name="suplier" class="input-suplier" />
+                                    <br />
+                                </div>
+
+                            </div>
+                            <div class="col-xs-3 text-left">
+                                <div id="form-tanggal-masuk">
+                                    <label>Tanggal Masuk</label><br>
+                                    <input  type="text" name="tanggal-masuk" class="input-tanggal-masuk" />
+                                    <br />
+                                </div>
+
+                            </div>
 
                         </div>
+                        <br /><br />
+
+
                         <div class="row">
                             <div class="col-xs-1 text-right">
                                 <div class="form-group">
@@ -237,7 +298,7 @@
             $('.input-tanggal').datepicker({
                 dateFormat: 'yy-mm-dd' // Set format tanggalnya jadi yyyy-mm-dd
             });
-            $('#form-tanggal, #form-bulan, #form-tahun').hide(); // Sebagai default kita sembunyikan form filter tanggal, bulan & tahunnya
+            $('#form-tanggal, #form-bulan, #form-tahun, #form-mesin,#form-aktual-pakai,#form-no-npb,#form-nama-barang,#form-no-po,#form-suplier,#form-tanggal-masuk').hide(); // Sebagai default kita sembunyikan form filter tanggal, bulan & tahunnya
             $('#filter').change(function(){ // Ketika user memilih filter
                 if($(this).val() == '1'){ // Jika filter nya 1 (per tanggal)
                     $('#form-bulan, #form-tahun').hide(); // Sembunyikan form bulan dan tahun
@@ -245,7 +306,7 @@
                 }else if($(this).val() == '2'){ // Jika filter nya 2 (per bulan)
                     $('#form-tanggal').hide(); // Sembunyikan form tanggal
                     $('#form-bulan, #form-tahun').show(); // Tampilkan form bulan dan tahun
-                }else{ // Jika filternya 3 (per tahun)
+                }else if($(this).val() == '3'){ // Jika filternya 3 (per tahun)
                     $('#form-tanggal, #form-bulan').hide(); // Sembunyikan form tanggal dan bulan
                     $('#form-tahun').show(); // Tampilkan form tahun
                 }

@@ -82,9 +82,6 @@
                     <td><?php echo $harga ?></td>
                     <td><?php echo $jumlah_harga ?></td>
 
-
-
-
                 </tr>
                 <?php
             }
