@@ -183,4 +183,36 @@ class Barang_model extends CI_Model
 
         return $this->db->get()->result(); // Ambil data pada tabel barangs sesuai kondisi diatas
     }
+    public function view_by_mesin($mesin){
+        $this->db->where('id_mesin', $mesin); // Tambahkan where tanggal nya
+
+        return $this->db->get('tbl_barangs')->result();// Tampilkan data barangs sesuai tanggal yang diinput oleh user pada filter
+    }
+    public function view_by_aktual_pakai($aktual_pakai){
+        $this->db->where('id_aktual_pakai', $aktual_pakai); // Tambahkan where tanggal nya
+
+        return $this->db->get('tbl_barangs')->result();// Tampilkan data barangs sesuai tanggal yang diinput oleh user pada filter
+    }
+    public function view_by_no_npb($no_npb){
+        $this->db->where('no_npb', $no_npb); // Tambahkan where tanggal nya
+
+        return $this->db->get('tbl_barangs')->result();// Tampilkan data barangs sesuai tanggal yang diinput oleh user pada filter
+    }
+    public function view_by_nama_barang($nama_barang){
+        $this->db->where('nama_barang', $nama_barang); // Tambahkan where tanggal nya
+
+        return $this->db->get('tbl_barangs')->result();// Tampilkan data barangs sesuai tanggal yang diinput oleh user pada filter
+    }
+    public function view_by_suplier($suplier){
+        $this->db->where('id_suplier', $suplier); // Tambahkan where tanggal nya
+
+        return $this->db->get('tbl_barangs')->result();// Tampilkan data barangs sesuai tanggal yang diinput oleh user pada filter
+    }
+    public function view_by_tanggal_masuk($tanggal_masuk){
+        $this->db->where('DATE(tanggal_masuk)', $tanggal_masuk); // Tambahkan where tanggal nya
+
+        return $this->db->get('tbl_barangs')->result();// Tampilkan data barangs sesuai tanggal yang diinput oleh user pada filter
+    }
+
+
 }

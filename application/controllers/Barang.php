@@ -72,12 +72,48 @@ class Barang extends BaseController
                 $ket = 'Data barangs Bulan '.$nama_bulan[$bulan].' '.$tahun;
                 $url_cetak = 'barang/cetak?filter=2&bulan='.$bulan.'&tahun='.$tahun;
                 $barangs = $this->barang_model->view_by_month($bulan, $tahun, $returns["page"], $returns["segment"]); // Panggil fungsi view_by_month yang ada di barang_model
-            }else{ // Jika filter nya 3 (per tahun)
+            }else if($filter == '3'){ // Jika filter nya 3 (per tahun)
                 $tahun = $_GET['tahun'];
 
                 $ket = 'Data barangs Tahun '.$tahun;
                 $url_cetak = 'barang/cetak?filter=3&tahun='.$tahun;
                 $barangs = $this->barang_model->view_by_year($tahun, $returns["page"], $returns["segment"]); // Panggil fungsi view_by_year yang ada di barang_model
+            }else if($filter == '4'){ // Jika filter nya 1 (per tanggal)
+                $mesin = $_GET['mesin'];
+
+                $ket = 'Data barangs mesin '.$mesin;
+                $url_cetak = 'barang/cetak?filter=4&mesin='.$mesin;
+                $barangs = $this->barang_model->view_by_mesin($mesin, $returns["page"], $returns["segment"]); // Panggil fungsi view_by_date yang ada di barang_model
+            }else if($filter == '5'){ // Jika filter nya 1 (per tanggal)
+                $aktual_pakai = $_GET['aktual_pakai'];
+
+                $ket = 'Data barangs aktual pakai '.$aktual_pakai;
+                $url_cetak = 'barang/cetak?filter=5&aktual_pakai='.$aktual_pakai;
+                $barangs = $this->barang_model->view_by_aktual_pakai($aktual_pakai, $returns["page"], $returns["segment"]); // Panggil fungsi view_by_date yang ada di barang_model
+            }else if($filter == '6'){ // Jika filter nya 1 (per tanggal)
+                $no_npb = $_GET['no_npb'];
+
+                $ket = 'Data barangs no pnb '.$no_npb;
+                $url_cetak = 'barang/cetak?filter=6&no_npb='.$no_npb;
+                $barangs = $this->barang_model->view_by_no_npb($no_npb, $returns["page"], $returns["segment"]); // Panggil fungsi view_by_date yang ada di barang_model
+            }else if($filter == '7'){ // Jika filter nya 1 (per tanggal)
+                $nama_barang = $_GET['nama_barang'];
+
+                $ket = 'Data barang '.$nama_barang;
+                $url_cetak = 'barang/cetak?filter=7&nama_barang='.$nama_barang;
+                $barangs = $this->barang_model->view_by_nama_barang($nama_barang, $returns["page"], $returns["segment"]); // Panggil fungsi view_by_date yang ada di barang_model
+            }else if($filter == '8'){ // Jika filter nya 1 (per tanggal)
+                $suplier = $_GET['suplier'];
+
+                $ket = 'Data barang Suplier '.$suplier;
+                $url_cetak = 'barang/cetak?filter=8&suplier='.$suplier;
+                $barangs = $this->barang_model->view_by_suplier($suplier, $returns["page"], $returns["segment"]); // Panggil fungsi view_by_date yang ada di barang_model
+            }else { // Jika filter nya 1 (per tanggal)
+                $tanggal_masuk = $_GET['tanggal_masuk'];
+
+                $ket = 'Data barangs Tanggal '.date('d-m-y', strtotime($tanggal_masuk));
+                $url_cetak = 'barang/cetak?filter=9&tanggal_masuk='.$tanggal_masuk;
+                $barangs = $this->barang_model->view_by_tanggal_masuk($tanggal_masuk, $returns["page"], $returns["segment"]); // Panggil fungsi view_by_date yang ada di barang_model
             }
         }else{ // Jika user tidak mengklik tombol tampilkan
             $ket = 'Semua Data barangs';
@@ -395,11 +431,46 @@ class Barang extends BaseController
 
                 $ket = 'Data barangs Bulan '.$nama_bulan[$bulan].' '.$tahun;
                 $barangs = $this->barang_model->view_by_month($bulan, $tahun); // Panggil fungsi view_by_month yang ada di barang_model
-            }else{ // Jika filter nya 3 (per tahun)
+            }else if ($filter == '1') { // Jika filter nya 3 (per tahun)
                 $tahun = $_GET['tahun'];
 
                 $ket = 'Data barangs Tahun '.$tahun;
                 $barangs = $this->barang_model->view_by_year($tahun); // Panggil fungsi view_by_year yang ada di barang_model
+            }else if($filter == '1'){ // Jika filter nya 1 (per tanggal)
+                $mesin = $_GET['mesin'];
+
+                $ket = 'Data barangs mesin '.$mesin;
+                $barangs = $this->barang_model->view_by_mesin($mesin); // Panggil fungsi view_by_date yang ada di barang_model
+            }else if($filter == '1'){ // Jika filter nya 1 (per tanggal)
+                $mesin = $_GET['mesin'];
+
+                $ket = 'Data barangs mesin '.$mesin;
+                $barangs = $this->barang_model->view_by_mesin($mesin); // Panggil fungsi view_by_date yang ada di barang_model
+            }else if($filter == '5'){ // Jika filter nya 1 (per tanggal)
+                $aktual_pakai = $_GET['aktual_pakai'];
+
+                $ket = 'Data barangs aktual pakai '.$aktual_pakai;
+                $barangs = $this->barang_model->view_by_aktual_pakai($aktual_pakai); // Panggil fungsi view_by_date yang ada di barang_model
+            }else if($filter == '6'){ // Jika filter nya 1 (per tanggal)
+                $no_npb = $_GET['no_npb'];
+
+                $ket = 'Data barangs no pnb '.$no_npb;
+                $barangs = $this->barang_model->view_by_no_npb($no_npb); // Panggil fungsi view_by_date yang ada di barang_model
+            }else if($filter == '7'){ // Jika filter nya 1 (per tanggal)
+                $nama_barang = $_GET['nama_barang'];
+
+                $ket = 'Data barang '.$nama_barang;
+                $barangs = $this->barang_model->view_by_nama_barang($nama_barang); // Panggil fungsi view_by_date yang ada di barang_model
+            }else if($filter == '8'){ // Jika filter nya 1 (per tanggal)
+                $suplier = $_GET['suplier'];
+
+                $ket = 'Data barang Suplier '.$suplier;
+                $barangs = $this->barang_model->view_by_suplier($suplier); // Panggil fungsi view_by_date yang ada di barang_model
+            }else { // Jika filter nya 1 (per tanggal)
+                $tanggal_masuk = $_GET['tanggal_masuk'];
+
+                $ket = 'Data barangs Tanggal '.date('d-m-y', strtotime($tanggal_masuk));
+                $barangs = $this->barang_model->view_by_tanggal_masuk($tanggal_masuk); // Panggil fungsi view_by_date yang ada di barang_model
             }
         }else{ // Jika user tidak mengklik tombol tampilkan
             $ket = 'Semua Data barangs';
