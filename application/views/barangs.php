@@ -201,8 +201,8 @@
                                 <th>Jumlah Masuk</th>
                                 <th>Sisa</th>
                                 <th>Keterangan</th>
-                                <th>Harga</th>
-                                <th>Jumlah Harga</th>
+                                <th>Harga (Rp)</th>
+                                <th>Jumlah Harga(Rp)</th>
                                 <th class="text-center">Actions</th>
                             </tr>
                             <?php
@@ -235,21 +235,34 @@
                                         <td><?php echo $jumlah_masuk?></td>
                                         <td><?php echo $sisa?></td>
                                         <td><?php echo $record->keterangan?></td>
-                                        <td><?php echo 'Rp ',$harga ?></td>
-                                        <td><?php echo 'Rp ',$jumlah_harga ?></td>
+                                        <td><?php echo number_format($harga,2,',','.') ?></td>
+                                        <td><?php echo number_format($jumlah_harga,2,',','.') ?></td>
+
+                                        <td class="text-center">
+
+                                            <?php
+
+                                            if($role == ROLE_ADMIN)
+                                            {
+                                                ?>
+                                                <a class="btn btn-sm btn-info" href="<?php echo base_url().'editBarangOld/'.$record->barangId; ?>"><i class="fa fa-pencil"></i></a>
+                                                <a class="btn btn-sm btn-danger deleteBarang" href="#" data-barangid="<?php echo $record->barangId; ?>"><i class="fa fa-trash"></i></a>
+
+
+                                                <?php
+                                            }
+                                            ?>
+
+                                        </td>
 
                                     </tr>
                                     <?php
                                 }
                             }
                             ?>
-
-                        </table>
-                        <table class="table table-hover">
-                            <tr>
-                                <th>Total Harga Berdasarkan</th>
-                            </tr>
                             <?php
+                            $jumlah_harga_total = 0;
+
                             if(!empty($barangs))
                             {
                                 foreach($barangs as $record)
@@ -258,19 +271,20 @@
                                     <?php $jumlah_masuk = $record->jumlah_masuk ?>
                                     <?php $harga = $record->harga ?>
                                     <?php $jumlah_harga = $jumlah_masuk*$harga ?>
-                                    <?php $jumlah_harga_total =  $jumlah_harga*$harga ?>
+                                    <?php $jumlah_harga_total +=  $jumlah_harga ?>
 
 
-                                    <tr>
-
-                                        <td><?php echo 'Rp ',$jumlah_harga_total ?></td>
-
-
-                                    </tr>
                                     <?php
                                 }
                             }
                             ?>
+                            <tr>
+                                <th colspan="14">Total Jumlah Harga </th>
+
+                                <th colspan="2" ><?php echo 'Rp ',number_format( $jumlah_harga_total,2,',','.') ?></th>
+                            </tr>
+
+
                         </table>
 
 

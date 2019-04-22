@@ -431,17 +431,12 @@ class Barang extends BaseController
 
                 $ket = 'Data barangs Bulan '.$nama_bulan[$bulan].' '.$tahun;
                 $barangs = $this->barang_model->view_by_month($bulan, $tahun); // Panggil fungsi view_by_month yang ada di barang_model
-            }else if ($filter == '1') { // Jika filter nya 3 (per tahun)
+            }else if ($filter == '3') { // Jika filter nya 3 (per tahun)
                 $tahun = $_GET['tahun'];
 
                 $ket = 'Data barangs Tahun '.$tahun;
                 $barangs = $this->barang_model->view_by_year($tahun); // Panggil fungsi view_by_year yang ada di barang_model
-            }else if($filter == '1'){ // Jika filter nya 1 (per tanggal)
-                $mesin = $_GET['mesin'];
-
-                $ket = 'Data barangs mesin '.$mesin;
-                $barangs = $this->barang_model->view_by_mesin($mesin); // Panggil fungsi view_by_date yang ada di barang_model
-            }else if($filter == '1'){ // Jika filter nya 1 (per tanggal)
+            }else if($filter == '4'){ // Jika filter nya 1 (per tanggal)
                 $mesin = $_GET['mesin'];
 
                 $ket = 'Data barangs mesin '.$mesin;

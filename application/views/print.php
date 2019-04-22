@@ -79,14 +79,38 @@
                     <td><?php echo $jumlah_masuk?></td>
                     <td><?php echo $sisa?></td>
                     <td><?php echo $record->keterangan?></td>
-                    <td><?php echo $harga ?></td>
-                    <td><?php echo $jumlah_harga ?></td>
+                    <td><?php echo number_format($harga,2,',','.') ?></td>
+                    <td><?php echo number_format($jumlah_harga,2,',','.') ?></td>
 
                 </tr>
                 <?php
             }
         }
         ?>
+        <?php
+        $jumlah_harga_total = 0;
+
+        if(!empty($barangs))
+        {
+            foreach($barangs as $record)
+            {
+                ?>
+                <?php $jumlah_masuk = $record->jumlah_masuk ?>
+                <?php $harga = $record->harga ?>
+                <?php $jumlah_harga = $jumlah_masuk*$harga ?>
+                <?php $jumlah_harga_total +=  $jumlah_harga ?>
+
+
+                <?php
+            }
+        }
+        ?>
+        <tr>
+            <th colspan="14">Total Jumlah Harga </th>
+
+            <th colspan="2" ><?php echo 'Rp ',number_format( $jumlah_harga_total,2,',','.') ?></th>
+        </tr>
+
     </table>
 
 
