@@ -46,7 +46,7 @@
                         <script src="<?php echo base_url('assets/jquery.min.js'); ?>"></script> <!-- Load file jquery -->
                         <form method="get" action="<?php echo base_url() ?>barangListing">
                             <div class="row">
-                                <div class="col-xs-2">
+                                <div class="col-xs-3 text-left"">
                                     <div id="form-select">
                                         <label>Filter Berdasarkan</label><br>
                                         <select name="filter" id="filter">
@@ -58,11 +58,12 @@
                                             <option value="5">Per Aktual Pakai</option>
                                             <option value="6">Per NO NPB</option>
                                             <option value="7">Per Nama Barang</option>
-                                            <option value="8">Per Suplier</option>
-                                            <option value="9">Per Tanggal Masuk</option>
+                                            <option value="8">Per NO PO</option>
+                                            <option value="9">Per Suplier</option>
+                                            <option value="10">Per Tanggal Masuk</option>
+                                            <option value="11">Custom</option>
 
                                         </select>
-                                        <br /><br />
                                     </div>
 
                                 </div>
@@ -70,11 +71,10 @@
                                     <div id="form-tanggal">
                                         <label>Tanggal</label><br>
                                         <input  type="text" name="tanggal" class="input-tanggal" />
-                                        <br />
                                     </div>
 
                                 </div>
-                                <div class="col-xs-2">
+                                <div class="col-xs-3 text-left"">
                                     <div id="form-bulan">
                                         <label>Bulan</label><br>
                                         <select name="bulan">
@@ -95,7 +95,7 @@
 
                                     </div>
                                 </div>
-                                <div class="col-md-2">
+                                <div class="col-xs-3 text-left"">
                                     <div id="form-tahun">
                                         <label>Tahun</label><br>
                                         <select name="tahun">
@@ -113,7 +113,7 @@
                                     <div id="form-mesin">
                                         <label>Mesin</label><br>
                                         <input  type="text" name="mesin" class="input-mesin" />
-                                        <br />
+                                        <br /><br />
                                     </div>
 
                                 </div>
@@ -121,21 +121,29 @@
                                     <div id="form-aktual-pakai">
                                         <label>Aktual Pakai</label><br>
                                         <input  type="text" name="aktual_pakai" class="input-aktual-pakai" />
-                                        <br />
+                                        <br /><br />
                                     </div>
                                 </div>
                                 <div class="col-xs-3 text-left">
                                     <div id="form-no-npb">
                                         <label>NO NPB</label><br>
                                         <input  type="text" name="no_npb" class="input-no-npb" />
-                                        <br />
+                                        <br /><br />
                                     </div>
                                 </div>
                                 <div class="col-xs-3 text-left">
                                     <div id="form-nama-barang">
                                         <label>Nama Barang</label><br>
                                         <input  type="text" name="nama_barang" class="input-nama-barang" />
-                                        <br />
+                                        <br /><br />
+                                    </div>
+
+                                </div>
+                                <div class="col-xs-3 text-left">
+                                    <div id="form-no-po">
+                                        <label>No PO</label><br>
+                                        <input  type="text" name="no_po" class="input-no-po" />
+                                        <br /><br />
                                     </div>
 
                                 </div>
@@ -144,7 +152,7 @@
                                     <div id="form-suplier">
                                         <label>Suplier</label><br>
                                         <input  type="text" name="suplier" class="input-suplier" />
-                                        <br />
+                                        <br /><br />
                                     </div>
 
                                 </div>
@@ -152,27 +160,29 @@
                                     <div id="form-tanggal-masuk">
                                         <label>Tanggal Masuk</label><br>
                                         <input  type="text" name="tanggal_masuk" class="input-tanggal-masuk" />
-                                        <br />
+                                        <br /><br />
                                     </div>
 
                                 </div>
+
+
+
 
                             </div>
                             <br /><br />
 
-
                             <div class="row">
-                                <div class="col-xs-1 text-right">
+                                <div class="col-xs-1 text-left">
                                     <div class="form-group">
                                         <button  type="submit" class="btn btn-info">Tampilkan</button>
                                     </div>
                                 </div>
-                                <div class="col-xs-1 text-left">
+                                <div class="col-xs-2 text-left">
                                     <div class="form-group">
                                         <a class="btn btn-default" href="<?php echo base_url(); ?>barangListing">Reset Filter</a>
                                     </div>
                                 </div>
-                                <div class="col-xs-2 text-right">
+                                <div class="col-xs-2 text-left">
                                     <div class="form-group">
                                         <a class="btn btn-warning" href="<?php echo $url_cetak; ?>"><i class="fa fa-print"></i> Cetak</a>
                                     </div>
@@ -313,43 +323,50 @@
 <script src="<?php echo base_url('assets/jquery-ui/jquery-ui.min.js'); ?>"></script> <!-- Load file plugin js jquery-ui -->
 <script>
     $(document).ready(function(){ // Ketika halaman selesai di load
-        $('.input-tanggal').datepicker({
+      /*  $('.input-tanggal').datepicker({
             dateFormat: 'yy-mm-dd' // Set format tanggalnya jadi yyyy-mm-dd
-        });
+        });*/
         $('.input-tanggal-masuk').datepicker({
             dateFormat: 'yy-mm-dd' // Set format tanggalnya jadi yyyy-mm-dd
         });
-        $('#form-tanggal, #form-bulan, #form-tahun, #form-mesin,#form-aktual-pakai,#form-no-npb,#form-nama-barang,#form-suplier,#form-tanggal-masuk').hide(); // Sebagai default kita sembunyikan form filter tanggal, bulan & tahunnya
+        $('#form-tanggal, #form-bulan, #form-tahun, #form-mesin,#form-aktual-pakai,#form-no-npb,#form-nama-barang,#form-no-po,#form-suplier,#form-tanggal-masuk').hide(); // Sebagai default kita sembunyikan form filter tanggal, bulan & tahunnya*/
+
         $('#filter').change(function(){ // Ketika user memilih filter
             if($(this).val() == '1'){ // Jika filter nya 1 (per tanggal)
-                $('#form-bulan, #form-tahun,#form-mesin,#form-aktual-pakai,#form-no-npb,#form-nama-barang,#form-suplier,#form-tanggal-masuk').hide(); // Sembunyikan form bulan dan tahun
-                $('#form-tanggal').show(); // Tampilkan form tanggal
+                $('#form-mesin,#form-aktual-pakai,#form-no-npb,#form-nama-barang,#form-no-po,#form-suplier,#form-tanggal-masuk').hide(); // Sembunyikan form bulan dan tahun
+                $('#form-tanggal,#form-bulan, #form-tahun').show(); // Tampilkan form tanggal
             }else if($(this).val() == '2'){ // Jika filter nya 2 (per bulan)
-                $('#form-tanggal, #form-tahun,#form-mesin,#form-aktual-pakai,#form-no-npb,#form-nama-barang,#form-suplier,#form-tanggal-masuk ').hide(); // Sembunyikan form tanggal
+                $('#form-tanggal, #form-tahun,#form-mesin,#form-aktual-pakai,#form-no-npb,#form-nama-barang,#form-no-po,#form-suplier,#form-tanggal-masuk ').hide(); // Sembunyikan form tanggal
                 $('#form-bulan, #form-tahun').show(); // Tampilkan form bulan dan tahun
             }else if($(this).val() == '3'){ // Jika filternya 3 (per tahun)
-                $('#form-tanggal, #form-bulan, #form-tahun,#form-mesin,#form-aktual-pakai,#form-no-npb,#form-nama-barang,#form-suplier,#form-tanggal-masuk').hide(); // Sembunyikan form tanggal dan bulan
+                $('#form-tanggal, #form-bulan, #form-tahun,#form-mesin,#form-aktual-pakai,#form-no-npb,#form-nama-barang,#form-no-po,#form-suplier,#form-tanggal-masuk').hide(); // Sembunyikan form tanggal dan bulan
                 $('#form-tahun').show(); // Tampilkan form tahun
             }else if($(this).val() == '4'){ // Jika filternya 3 (per tahun)
-                $('#form-tanggal, #form-bulan, #form-tahun,#form-aktual-pakai,#form-no-npb,#form-nama-barang,#form-suplier,#form-tanggal-masuk').hide(); // Sembunyikan form tanggal dan bulan
+                $('#form-tanggal, #form-bulan, #form-tahun,#form-aktual-pakai,#form-no-npb,#form-nama-barang,#form-no-po,#form-suplier,#form-tanggal-masuk').hide(); // Sembunyikan form tanggal dan bulan
                 $('#form-mesin').show(); // Tampilkan form tahun
             }else if($(this).val() == '5'){ // Jika filternya 3 (per tahun)
-                $('#form-tanggal, #form-bulan, #form-tahun, #form-mesin,#form-no-npb,#form-nama-barang,#form-suplier,#form-tanggal-masuk').hide(); // Sembunyikan form tanggal dan bulan
+                $('#form-tanggal, #form-bulan, #form-tahun, #form-mesin,#form-no-npb,#form-nama-barang,#form-no-po,#form-suplier,#form-tanggal-masuk').hide(); // Sembunyikan form tanggal dan bulan
                 $('#form-aktual-pakai').show(); // Tampilkan form tahun
             }else if($(this).val() == '6'){ // Jika filternya 3 (per tahun)
-                $('#form-tanggal, #form-bulan, #form-tahun, #form-mesin,#form-aktual-pakai,#form-nama-barang,#form-suplier,#form-tanggal-masuk').hide(); // Sembunyikan form tanggal dan bulan
+                $('#form-tanggal, #form-bulan, #form-tahun, #form-mesin,#form-aktual-pakai,#form-nama-barang,#form-no-po,#form-suplier,#form-tanggal-masuk').hide(); // Sembunyikan form tanggal dan bulan
                 $('#form-no-npb').show(); // Tampilkan form tahun
             }else if($(this).val() == '7'){ // Jika filternya 3 (per tahun)
-                $('#form-tanggal, #form-bulan, #form-tahun, #form-mesin,#form-aktual-pakai,#form-no-npb,#form-suplier,#form-tanggal-masuk').hide(); // Sembunyikan form tanggal dan bulan
+                $('#form-tanggal, #form-bulan, #form-tahun, #form-mesin,#form-aktual-pakai,#form-no-npb,#form-no-po,#form-suplier,#form-tanggal-masuk').hide(); // Sembunyikan form tanggal dan bulan
                 $('#form-nama-barang').show(); // Tampilkan form tahun
             }else if($(this).val() == '8'){ // Jika filternya 3 (per tahun)
                 $('#form-tanggal, #form-bulan, #form-tahun, #form-mesin,#form-aktual-pakai,#form-no-npb,#form-nama-barang,#form-tanggal-masuk').hide(); // Sembunyikan form tanggal dan bulan
+                $('#form-no-po').show(); // Tampilkan form tahun
+            }else if($(this).val() == '9'){ // Jika filternya 3 (per tahun)
+                $('#form-tanggal, #form-bulan, #form-tahun, #form-mesin,#form-aktual-pakai,#form-no-npb,#form-nama-barang,#form-no-po,#form-tanggal-masuk').hide(); // Sembunyikan form tanggal dan bulan
                 $('#form-suplier').show(); // Tampilkan form tahun
-            }else{ // Jika filternya 3 (per tahun)
-                $('#form-tanggal, #form-bulan, #form-tahun, #form-mesin,#form-aktual-pakai,#form-no-npb,#form-nama-barang,#form-suplier').hide(); // Sembunyikan form tanggal dan bulan
+            }else if($(this).val() == '10'){ // Jika filternya 3 (per tahun)
+                $('#form-tanggal, #form-bulan, #form-tahun, #form-mesin,#form-aktual-pakai,#form-no-npb,#form-nama-barang,#form-no-po,#form-suplier').hide(); // Sembunyikan form tanggal dan bulan
                 $('#form-tanggal-masuk').show(); // Tampilkan form tahun
+            } else { // Jika filternya 3 (per tahun)
+                $('#form-tanggal, #form-bulan, #form-tahun, #form-mesin,#form-aktual-pakai,#form-no-npb,#form-nama-barang,#form-no-po,#form-suplier,#form-tanggal-masuk').show(); // Sembunyikan form tanggal dan bulan
+
             }
-            $('#form-tanggal input, #form-bulan select, #form-tahun select,#form-mesin input,#form-aktual-pakai input,#form-no-npb input,#form-nama-barang input,#form-suplier input,#form-tanggal-masuk input').val(''); // Clear data pada textbox tanggal, combobox bulan & tahun
+            $('#form-tanggal input, #form-bulan select, #form-tahun select,#form-mesin input,#form-aktual-pakai input,#form-no-npb input,#form-nama-barang input,#form-no-po input,#form-suplier input,#form-tanggal-masuk input').val(''); // Clear data pada textbox tanggal, combobox bulan & tahun
         })
     })
 </script>

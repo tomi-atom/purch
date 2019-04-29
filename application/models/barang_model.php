@@ -152,8 +152,10 @@ class Barang_model extends CI_Model
         $this->db->query("delete  from users where user_id='".$id."'");
     }
 
-    public function view_by_date($date){
-        $this->db->where('DATE(tanggal)', $date); // Tambahkan where tanggal nya
+    public function view_by_date($date,$month,$year){
+        $this->db->like('DATE(tanggal)', $date); // Tambahkan where tanggal nya
+        $this->db->like('MONTH(tanggal)', $month); // Tambahkan where bulan
+        $this->db->like('YEAR(tanggal)', $year);
 
         return $this->db->get('tbl_barangs')->result();// Tampilkan data barangs sesuai tanggal yang diinput oleh user pada filter
     }
@@ -173,6 +175,36 @@ class Barang_model extends CI_Model
 
     public function view_all(){
         return $this->db->get('tbl_barangs')->result(); // Tampilkan semua data barangs
+    }
+    public function view_by_custom($date,$month,$year, $mesin,$aktual_pakai,$no_npb,$nama_barang,$no_po,$suplier,$tanggal_masuk){
+
+        $this->db->like('DATE(tanggal)', $date);
+        $this->db->like('MONTH(tanggal)', $month); // Tambahkan where bulan
+        $this->db->like('YEAR(tanggal)', $year);
+
+        $this->db->like('id_mesin', $mesin);
+        $this->db->like('id_aktual_pakai', $aktual_pakai);
+        $this->db->like('no_npb', $no_npb);
+        $this->db->like('nama_barang', $nama_barang);
+        $this->db->like('no_po', $no_po);
+        $this->db->like('id_suplier', $suplier);
+        $this->db->like('DATE(tanggal_masuk)', $tanggal_masuk);
+        return $this->db->get('tbl_barangs')->result(); // Tampilkan semua data barangs/*
+        /*$this->db->select('*');
+        $this->db->from('tbl_barangs');
+        if(!empty($mesin) or !empty($aktual_pakai) or !empty($no_npb) or !empty($nama_barang) or !empty($no_po) or !empty($suplier)) {
+            $likeCriteria = "(id_mesin  LIKE '%".$mesin."%'
+                            OR  id_aktual_pakai  LIKE '%".$aktual_pakai."%'
+                            OR  no_npb  LIKE '%".$no_npb."%'
+                            OR  nama_barang  LIKE '%".$nama_barang."%' 
+                            OR  no_po  LIKE '%".$no_po."%'
+                            OR   id_suplier LIKE '%".$suplier."%')";
+            $this->db->where($likeCriteria);
+        }
+
+        $query = $this->db->get();
+
+        return count($query->result());*/
     }
 
     public function option_tahun(){
@@ -210,6 +242,11 @@ class Barang_model extends CI_Model
     }
     public function view_by_tanggal_masuk($tanggal_masuk){
         $this->db->where('DATE(tanggal_masuk)', $tanggal_masuk); // Tambahkan where tanggal nya
+
+        return $this->db->get('tbl_barangs')->result();// Tampilkan data barangs sesuai tanggal yang diinput oleh user pada filter
+    }
+    public function view_by_no_po($no_po){
+        $this->db->where('no_po', $no_po); // Tambahkan where tanggal nya
 
         return $this->db->get('tbl_barangs')->result();// Tampilkan data barangs sesuai tanggal yang diinput oleh user pada filter
     }
