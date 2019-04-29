@@ -140,7 +140,7 @@ class Barang extends BaseController
 
                 $ket = 'Data barang Suplier ';
                 $url_cetak = 'barang/cetak?filter=11&tanggal='.$tanggal.'&bulan='.$bulan.'&tahun='.$tahun.'&mesin='.$mesin.'&aktual_pakai='.$aktual_pakai.'&no_npb='.$no_npb.'&nama_barang='.$nama_barang.'&no_po='.$no_po.'&suplier='.$suplier.'&tanggal_masuk='.$tanggal_masuk;
-                $barangs = $this->barang_model->view_by_custom($tanggal,$bulan,$tahun,$mesin,$aktual_pakai,$no_npb,$nama_barang,$no_po,$suplier,$tanggal_masuk);
+                $barangs = $this->barang_model->view_by_custom($tanggal,$bulan,$tahun,$mesin,$aktual_pakai,$no_npb,$nama_barang,$no_po,$suplier,$tanggal_masuk, $returns["page"], $returns["segment"]);
             }
 
         }else{ // Jika user tidak mengklik tombol tampilkan
